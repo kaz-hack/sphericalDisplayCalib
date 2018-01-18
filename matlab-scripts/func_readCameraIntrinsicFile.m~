@@ -6,17 +6,15 @@ function [ cam_mat, cam_dist ] = func_readCameraIntrinsicFile( dir )
 
 file_intrin = xml2struct(dir);
 
-str = file_intrin.opencv_storage.camera_matrix.data.Text;
+str = file_intrin.opencv_storage.proj_0_Rmat.data;
 %str = file_intrin.Children(14).Children(8).Children.Data;
 data = str2num(regexprep(str,'\r\n|\n|\r',''));
 cam_mat = reshape(data, 3,3)';
-disp(cam_mat);
 
-str = file_intrin.opencv_storage.distortion_coefficients.data.Text;
+str = file_intrin.
 %str = file_intrin.Children(16).Children(8).Children.Data;
 data = str2num(regexprep(str,'\r\n|\n|\r',''));
 cam_dist = reshape(data, 1,5);
-disp(cam_dist);
 
 end
 

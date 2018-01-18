@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opencv_storage>
+   <proj0_param type_id="opencv-matrix">
+      <rows>10</rows>
+      <cols>1</cols>
+      <dt>f</dt>
+      <data>1.39999807e+03  1.40489872e+03  5.84700422e+02  7.80438671e+02  4.52692326e-01 -5.48033237e-01  1.29283990e+00  2.48237878e-01  3.85099858e-01  8.88862193e-01</data>
+   </proj0_param>
+   <sphere_pose type_id="opencv-matrix">
+      <rows>4</rows>
+      <cols>1</cols>
+      <dt>f</dt>
+      <data>-1.12421634e-02  1.19510077e-01  3.45329666e+00  1.62534118e+00</data>
+   </sphere_pose>
+   <cam_param type_id="opencv-matrix">
+      <rows>9</rows>
+      <cols>1</cols>
+      <dt>f</dt>
+      <data>1.02331996e+03  1.02017544e+03  6.68994908e+02  5.03025620e+02 -3.64986490e-01  1.88729383e-01 -5.12086077e-02  2.89084226e-03  3.14636255e-05</data>
+   </cam_param>
+</opencv_storage>

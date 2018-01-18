@@ -12,19 +12,19 @@
 %%***************************************************************************/
 global DATA_DIR;
 
-DATA_DIR = '..\data';
+DATA_DIR = '../data/testData/';
 PROJ_RESOLUTION = [1280 800]; %% Modify the resolution based on the projector 
 
 
 %% Initial Guess %%
 
 % ------ read from camera intrinsics ------ %
-[ cam_mat, cam_dist ] = func_readCameraIntrinsicFile( [DATA_DIR '\cam_calib.xml']);
+[ cam_mat, cam_dist ] = func_readCameraIntrinsicFile( [DATA_DIR 'cam_calib.xml']);
 fc_cam = [cam_mat(1,1) cam_mat(2,2)];
 cc_cam = [cam_mat(1,3) cam_mat(2,3)];
 
 % ------ read from blob data ------ %
-N_PROJ = length(dir([DATA_DIR '\Proj*PairBlobData.xml']));
+N_PROJ = length(dir([DATA_DIR 'Proj*PairBlobData.xml']));
 if N_PROJ <= 0
     error("Can't find blob data Proj*PairBlobData.xml");
 end
@@ -32,7 +32,7 @@ x_cam = cell(1,N_PROJ);
 x_proj = cell(1,N_PROJ);
 
 for idx = 1: N_PROJ
-    file_path = [DATA_DIR '\Proj' num2str(idx) 'PairBlobData.xml'];
+    file_path = [DATA_DIR 'Proj' num2str(idx) 'PairBlobData.xml'];
     [ x_cam{idx},x_proj{idx} ] = func_read_blobxml( file_path );
 end
 
@@ -151,8 +151,8 @@ options.InitDamping = 500;
 [p,resnorm] = lsqnonlin(@multi_proj_func_F, p0, lb, ub, options);   
 % save to xml
 if(isreal(p))
-    saveParamsOpencvXml( p, [DATA_DIR '\new_params']);
-    disp(['result saved to ' DATA_DIR '\new_params.xml'])
+    saveParamsOpencvXml( p, [DATA_DIR 'new_params.xml']);
+    disp(['result saved to ' DATA_DIR 'new_params.xml'])
 else
      error('params have imaginary part; result not saved; calibrate it again')
 end

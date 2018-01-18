@@ -27,10 +27,11 @@ pc = p(22:23);
 
 %% prepare pixels from projector %%
 global DATA_DIR;
-file_path = [DATA_DIR '\Proj' num2str(proj_idx) 'PairBlobData.xml'];
+file_path = [DATA_DIR 'Proj' num2str(proj_idx) 'PairBlobData.xml'];
 xmlfile = xml2struct(file_path);    
     
-str = xmlfile.Children(8).Children(8).Children.Data;
+%str = xmlfile.Children(8).Children(8).Children.Data;
+str = xmlfile.opencv_storage.proj_pts.data.Text;
 data = str2num(regexprep(str,'\r\n|\n|\r',''));
 pt2 = data(:) -1;
 x_proj = reshape(pt2,2,length(pt2)/2); % 2 by length(x_proj)
@@ -88,7 +89,8 @@ x_cam_est = [xp; yp]; % 2 by N
 
 %% camera observations x_cam %%
 
-str = xmlfile.Children(4).Children(8).Children.Data;
+%str = xmlfile.Children(4).Children(8).Children.Data;
+str = xmlfile.opencv_storage.cam_pts.data.Text;
 data = str2num(regexprep(str,'\r\n|\n|\r',''));
 pt1 = data(:);
 x_cam = reshape(pt1,2,length(pt1)/2); % 2 by N
